@@ -2,13 +2,19 @@ version: "3.9"
 services:
   rtmp:
     build: ./rtmp
-    ports: 
+    ports:
       - "1935:1935"
       - "8080:8080"
     container_name: rtmp_server
     volumes:
-      - ./data:/tmp/hls    
+      - ./data:/tmp/hls
 
   rtmp_auth:
     build: ./rtmp_auth
     container_name: rtmp_auth_server
+
+  frontend:
+    build: ./frontend/boysmma
+    ports:
+      - "3000:3000"
+    container_name: frontend
